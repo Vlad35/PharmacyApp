@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Showing a Single Order</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+
+        div {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 20px auto;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 5px 0;
+        }
+
+        div > div {
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <ul>
+        <li th:text="'Customer: ' + ${order.customerId}"></li>
+        <li th:text="'Employee: ' + ${order.employeeId}"></li>
+        <li th:text="'Date Time: ' + ${order.orderDateTime}"></li>
+    </ul>
+    <div th:each="orderDetail : ${order.orderDetailsList}">
+        <ul>
+            <li th:text="'Medicine Id: ' + ${orderDetail.medicineId}"></li>
+            <li th:text="'Quantity: ' + ${orderDetail.quantity}"></li>
+            <li th:text="'Price per unit: ' + ${orderDetail.pricePerUnit}"></li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

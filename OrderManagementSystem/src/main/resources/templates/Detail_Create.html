@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Details Create Page</title>
+</head>
+<body>
+
+<form th:action="@{'/' + ${orderId} + '/orderDetail/create'}" th:object="${detail}" method="post">
+    <label for="medicineId">ID Лекарства:</label>
+    <input type="text" id="medicineId" th:field="*{medicineId}" required><br>
+
+    <label for="quantity">Количество :</label>
+    <input type="text" id="quantity" th:field="*{quantity}" required><br>
+
+    <label for="pricePerUnit">Цена:</label>
+    <input type="text" id="pricePerUnit" th:field="*{pricePerUnit}" required><br>
+
+    <button type="submit">Создать заказ</button>
+</form>
+</body>
+</html>

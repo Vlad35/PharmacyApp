@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Orders Page</title>
+    <style>
+        /* Установка общих стилей для страницы */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center; /* Выравнивание по центру */
+            background-color: #f0f0f0; /* Цвет фона */
+        }
+
+        /* Стиль для списка заказов */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        /* Стиль для ссылок на заказы */
+        a.order-link {
+            text-decoration: none;
+            color: #007bff; /* Ссылка на цвет Bootstrap */
+            padding: 5px 10px; /* Отступы вокруг текста */
+            margin: 5px; /* Внешние отступы между ссылками */
+            transition: background-color 0.3s, color 0.3s; /* Анимация при наведении */
+        }
+
+        /* Стиль для блока "No Order Found" */
+        .error-message {
+            color: #ff0000; /* Красный цвет текста */
+        }
+
+        /* Анимация при наведении на ссылку */
+        a.order-link:hover {
+            background-color: #007bff; /* Изменение цвета при наведении */
+            color: #fff; /* Изменение цвета текста при наведении */
+        }
+
+        /* Анимация при нажатии на ссылку */
+        a.order-link:active {
+            background-color: #0056b3; /* Изменение цвета при нажатии */
+        }
+    </style>
+</head>
+<body>
+<div th:if="${orders.isEmpty()}">
+    <h3 class="error-message">No Order Found</h3>
+</div>
+<div th:if="${!orders.isEmpty()}">
+    <div th:each="order : ${orders}">
+        <hr>
+        <ul>
+            <a th:href="@{/orders/{id}(id=${order.getId()})}" th:text="'Order Data By ID ' + ${order.getId()}" class="order-link"></a>
+            <li th:text="${order.getCustomerId()}"></li>
+            <li th:text="${order.getEmployeeId()}"></li>
+            <li th:text="${order.getOrderDateTime()}"></li>
+            <div th:each="orderDetail : ${order.getOrderDetailsList()}">
+                <a th:href="@{'/orders/' + ${order.getId()} + '/details/' + ${orderDetail.getId()}}" th:text="'Order Details ' + ${orderDetail.getId()} + ' for Order By Id ' + ${order.getId()}" class="order-link"></a>
+            </div>
+        </ul>
+        <hr>
+    </div>
+</div>
+</body>
+</html>

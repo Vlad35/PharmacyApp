@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Создание нового заказа</title>
+</head>
+<body>
+<h1>Создание нового заказа</h1>
+
+<form th:action="@{/orders/create}" th:object="${order}" method="post">
+
+    <label for="customerId">ID клиента:</label>
+    <input type="text" id="customerId" th:field="*{customerId}" required><br>
+
+    <label for="employeeId">ID сотрудника:</label>
+    <input type="text" id="employeeId" th:field="*{employeeId}" required><br>
+
+    <div th:if="${orderDetailList.isEmpty()}">
+        Nothing Here
+    </div>
+    <div th:if="${!orderDetailList.isEmpty()}">
+        <p th:each="orderDetail : ${orderDetailList}" th:text="${orderDetail.pricePerUnit}"></p>
+    </div>
+
+    <a th:href="@{'/' + ${order.getId()} + '/orderDetail/create'}">Добавить деталь</a>
+
+    <button type="submit">Создать заказ</button>
+</form>
+
+
+<div class="details-container"></div>
+
+</body>
+</html>

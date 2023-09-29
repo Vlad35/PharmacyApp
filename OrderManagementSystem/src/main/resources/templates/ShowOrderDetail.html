@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Showing Order Detail</title>
+    <style>
+        /* Стиль для обертки */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+
+        /* Стиль для блока с данными заказа */
+        div {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 20px auto;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        /* Стиль для пунктов списка */
+        p {
+            margin: 5px 0;
+        }
+
+        /* Стиль для заголовков */
+        p strong {
+            font-weight: bold;
+            color: #007bff; /* Ссылка на цвет Bootstrap */
+        }
+    </style>
+</head>
+<body>
+<div>
+    <p><strong>Medicine ID:</strong> <span th:text="${orderDetail.medicineId}"></span></p>
+    <p><strong>Price Per Unit:</strong> <span th:text="${orderDetail.pricePerUnit}"></span></p>
+    <p><strong>Quantity:</strong> <span th:text="${orderDetail.quantity}"></span></p>
+    <p><strong>Order Owner:</strong> <span th:text="${orderDetail.orderOwner}"></span></p>
+</div>
+</body>
+</html>
