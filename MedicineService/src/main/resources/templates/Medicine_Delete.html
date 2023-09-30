@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Medicine Delete</title>
+</head>
+<body>
+<form th:action="@{/api/medicines/remove}" th:method="POST">
+    <label for="skuCode">skuCode:</label>
+    <input type="text" id="skuCode" name="skuCode" required>
+    <br>
+
+    <input type="submit" value="Remove">
+</form>
+</body>
+</html>
