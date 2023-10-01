@@ -2,12 +2,17 @@ package ru.Vlad.Spring.PharmacyApp.MedicineService.Services;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import ru.Vlad.Spring.PharmacyApp.MedicineService.Models.Medicine;
+import ru.Vlad.Spring.PharmacyApp.MedicineService.Models.Supplier;
 import ru.Vlad.Spring.PharmacyApp.MedicineService.Repositories.MedicineRepository;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -48,6 +53,23 @@ public class MedicineService {
         }else {
             throw new RuntimeException("There is not a medicine with such a name in Inventory");
         }
+    }
+
+    public List<Supplier> getSuppliers() {
+        ParameterizedTypeReference<List<Supplier>> typeReference = new ParameterizedTypeReference<List<Supplier>>() {};
+
+        ResponseEntity<List<Supplier>> responseEntity = webClient
+                .get()
+                .uri("http://localhost:8083/api/suppliers")
+                .accept(MediaType.APPLICATION_JSON)
+                .retrieve()
+                .toEntity(typeReference)
+                .block();
+        assert responseEntity != null;
+        if(Objects.requireNonNull(responseEntity.getBody()).isEmpty()) {
+            throw new RuntimeException("There is no Manufacturer Registered!");
+        }
+        return responseEntity.getBody();
     }
 
 }

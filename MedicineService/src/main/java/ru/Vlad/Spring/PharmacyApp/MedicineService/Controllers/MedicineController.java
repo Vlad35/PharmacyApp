@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.Vlad.Spring.PharmacyApp.MedicineService.Models.Medicine;
+import ru.Vlad.Spring.PharmacyApp.MedicineService.Models.Supplier;
 import ru.Vlad.Spring.PharmacyApp.MedicineService.Services.MedicineService;
 
 import java.util.List;
@@ -27,6 +28,8 @@ public class MedicineController {
     @GetMapping("/add")
     public String addMedicinePage(Model model) {
         Medicine medicine = new Medicine();
+        List<Supplier> suppliers = medicineService.getSuppliers();
+        model.addAttribute("suppliers", suppliers);
         model.addAttribute("medicine",medicine);
         return "Medicine_Add";
     }

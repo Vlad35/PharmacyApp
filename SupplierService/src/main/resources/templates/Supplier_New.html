@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create a new Supplier</title>
+</head>
+<body>
+<form th:action="@{/api/suppliers/create}" th:method="POST" th:object="${supplier}">
+  <label for="Name">Name: </label>
+  <input type="text" id="Name" th:field="*{name}" required><br>
+
+  <label for="Email">Email: </label>
+  <input type="text" id="Email" th:field="*{email}" required><br>
+
+  <button type="submit">Add a new Supplier</button>
+</form>
+</body>
+</html>

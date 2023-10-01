@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Medicine Delete</title>
+</head>
+<body>
+<form th:action="@{/api/suppliers/delete}" th:method="POST" th:object="${name}">
+    <label for="name">Name: </label>
+    <input type="text" id="name" name="name" required>
+    <br>
+
+    <input type="submit" value="Remove">
+</form>
+</body>
+</html>

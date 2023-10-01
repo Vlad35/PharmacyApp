@@ -23,9 +23,12 @@
     <input type="text" id="expiryDate" name="expiryDate" pattern="\d{4}-\d{2}-\d{2}" placeholder="YYYY-MM-DD" required>
     <br>
 
-    <label for="manufacturer">Manufacturer:</label>
-    <input type="text" id="manufacturer" name="manufacturer" th:field="*{manufacturer}" required>
-    <br>
+    <label for="supplier">Supplier: </label>
+    <select th:object="${medicine}" th:field="*{manufacturer}" id="supplier">
+        <option th:each="supplier : ${suppliers}" th:value="${supplier.getId()}" th:text="${supplier.getName() + ' ' + supplier.getEmail()}">
+        </option>
+    </select>
+
 
     <input type="submit" value="Add">
 </form>

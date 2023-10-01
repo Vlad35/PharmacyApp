@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:if="${suppliers.isEmpty()}">
+    <h1>No Supplier Found</h1>
+</div>
+<div th:if="${!suppliers.isEmpty()}">
+    <div th:each="supplier : ${suppliers}">
+        <hr>
+        <ul>
+            <li th:text="${supplier.getId()}"></li>
+            <li th:text="${supplier.getEmail()}"></li>
+            <li th:text="${supplier.getName()}"></li>
+            <li th:text="${supplier.getStartedPartnershipAt()}"></li>
+        </ul>
+        <hr>
+    </div>
+</div>
+</body>
+</html>

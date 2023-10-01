@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/api/auth/registration}" th:method="POST">
+    <label for="username">User Name:</label>
+    <input type="text" id="username" name="customerName" required><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="customerPassword" required><br>
+
+    <label for="yearOfBirth">Year of Birth:</label>
+    <input type="text" id="yearOfBirth" name="yearOfBirth" required><br>
+
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email" required><br>
+
+    <button type="submit">Add a new Customer</button>
+</form>
+</body>
+</html>
