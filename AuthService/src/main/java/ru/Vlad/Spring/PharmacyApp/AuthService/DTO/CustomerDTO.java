@@ -11,8 +11,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CustomerDTO {
-    private String customerName;
-    private String customerPassword;
+    private String username;
+    private String password;
     private int yearOfBirth;
 
     private String email;

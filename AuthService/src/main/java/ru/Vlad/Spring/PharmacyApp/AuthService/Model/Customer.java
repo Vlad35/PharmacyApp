@@ -8,7 +8,6 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -23,11 +22,11 @@ public class Customer {
     @Column(name = "Id")
     private int id;
 
-    @Column(name="customerName",unique = true)
-    private String customerName;
+    @Column(name="username",unique = true)
+    private String username;
 
-    @Column(name="customerPassword")
-    private String customerPassword;
+    @Column(name="password")
+    private String password;
 
     @Column(name = "yearOfBirth")
     private int yearOfBirth;

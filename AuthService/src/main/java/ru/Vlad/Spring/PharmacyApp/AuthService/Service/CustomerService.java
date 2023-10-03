@@ -1,4 +1,4 @@
-package ru.Vlad.Spring.PharmacyApp.AuthService.Security;
+package ru.Vlad.Spring.PharmacyApp.AuthService.Service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ public class CustomerService {
     private final RoleRepository roleRepository;
 
     public void register(Customer customer) {
-        if(customer.getCustomerName() == null  || customer.getCustomerPassword() == null|| customer.getYearOfBirth() == 0 || customer.getEmail() == null) {
+        if(customer.getUsername() == null  || customer.getPassword() == null|| customer.getYearOfBirth() == 0 || customer.getEmail() == null) {
             throw  new RuntimeException("User is not registered");
         }
         Role role = roleRepository.findAll().get(0);

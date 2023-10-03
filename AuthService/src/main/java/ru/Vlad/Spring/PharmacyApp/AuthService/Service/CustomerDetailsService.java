@@ -1,6 +1,8 @@
 package ru.Vlad.Spring.PharmacyApp.AuthService.Service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -18,7 +20,9 @@ public class CustomerDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<Customer> optionalUser = customerRepository.findByCustomerName(username);
+        Optional<Customer> optionalUser = customerRepository.findByUsername(username);
+
+
         if(optionalUser.isEmpty()) {
             throw new UsernameNotFoundException("User Not Found!");
         }
