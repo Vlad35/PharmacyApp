@@ -18,6 +18,7 @@ import java.util.Collections;
 public class PreStartInitialization implements CommandLineRunner {
     private final RoleRepository roleRepository;
     private final CustomerRepository customerRepository;
+    private final PasswordEncoder passwordEncoder;
     @Override
     public void run(String... args) throws Exception {
         Role role = new Role();
@@ -27,7 +28,7 @@ public class PreStartInitialization implements CommandLineRunner {
 
         Customer customer = new Customer();
         customer.setCreatedAt(LocalDateTime.now());
-        customer.setPassword("$2a$10$UpP9usiM3oWNDaA8/BJeOeJpuroJsO709GFKYFsWV3Imtq59KyfHm");
+        customer.setPassword(passwordEncoder.encode("password"));
         customer.setUsername("Name");
         customer.setEmail("user@mail.com");
         customer.setRoles(Collections.singleton(role));
